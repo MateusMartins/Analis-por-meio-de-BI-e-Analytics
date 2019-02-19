@@ -14,24 +14,21 @@ summary(auto)
 
 # Quantitativos: 'mpg', 'cylinders', 'displacement', 'weight', 'acceleration', 'year', 'origin'
 # Qualitativos: 'horsepower', 'name'
-
-quantitativos <- list('mpg', 'cylinders', 'displacement', 'weight', 'acceleration', 'year', 'origin')
-qualitativos <- list('horsepower', 'name')
+quantitativos_names <- list('mpg', 'cylinders', 'displacement', 'weight', 'acceleration', 'year', 'origin')
+quantitativos <- list(auto$mpg, auto$cylinders, auto$displacement, auto$weight, auto$acceleration, auto$year, auto$origin)
+quantitativos_names <- list('horsepower', 'name')
+qualitativos <- list(auto$horsepower, auto$name)
 
 # Qual é o range de cada preditor quantitativo?
-
 for(i in quantitativos){
-  print(paste(i, ": ", range(auto[i])))
+  print(range(i))
 }
 
 #Qual é a média e o desvio padrão de cada variável preditora?
-
-for(i in quantitativos){
-  print('Média:')
-  print(paste(i, ": ", range(auto[i])))
-  print('Desvio padrão:')
-  print(paste(i, ": ", range(auto[i])))
+x = 1
+for(i in qualitativos){
+  print(paste(quantitativos_names[x], ' -> Média: ', mean(i), 'Desvio padrão: ', sd(i)))
+  x = x + 1
 }
-
 
 #Suponha que desejamos prever a milhagem de gás (mpg) com base em outrasvariáveis. Quais variáveis podem ser úteis para essa previsão? Justifique suaresposta
