@@ -41,3 +41,7 @@ count(Maior7)
 
 Maior8 <- filter(Boston, rm > 8)
 count(Maior8)
+
+new_boston <-Boston %>% filter(rm > 8)
+
+summary(new_boston)
