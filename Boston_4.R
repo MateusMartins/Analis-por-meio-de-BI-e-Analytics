@@ -9,7 +9,7 @@ Boston.lm1 <- lm(Boston$medv ~ Boston$zn +Boston$indus +Boston$chas + Boston$nox
 summary(Boston.lm1);
 
 # Melhores resultados
-Boston.lm2 <- lm(Boston$medv ~ Boston$zn + Boston$chas + Boston$nox +  Boston$rm +  Boston$dis +Boston$rad +  Boston$tax +  Boston$ptratio + Boston$black +Boston$lstat +Boston$crim);
+Boston.lm2 <- lm(Boston$medv ~ Boston$zn + Boston$age + Boston$chas + Boston$nox +  Boston$rm +  Boston$dis +Boston$rad +  Boston$tax +  Boston$ptratio + Boston$black +Boston$lstat +Boston$crim);
 summary(Boston.lm2);
 
 # Remocao dos outliers
@@ -34,3 +34,12 @@ fitted(Boston.lm3)
 residuals(Boston.lm3)
 scatter.smooth(y=residuals(Boston.lm3), x=fitted(Boston.lm3),  main="Boston")
 
+Boston.lm3 <- lm(medv ~ poly(lstat,2), data = Boston2);
+points(Boston2$medv , Boston.lm3$fitted.values, col="orange");
+
+Boston.lm4 <- lm(medv ~ poly(lstat,5), data = Boston2);
+points(Boston2$medv , Boston.lm4$fitted.values, col="red");
+
+Boston.lm3 <- lm(Boston2$medv ~ Boston2$age + Boston2$lstat + Boston2$age * Boston2$lstat);
+
+summary(Boston.lm3);
